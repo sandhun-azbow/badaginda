@@ -1,0 +1,17 @@
+{
+  "name": "badaginida",
+  "version": "1.0.0",
+  "description": "badaginida rider locaton",
+  "main": "server.js",
+  "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sandhun senavirathna",
+  "license": "ISC",
+  "dependencies" : {
+  "socket.io" : "*",
+  "express" : "*",
+  "mongoose" : "*"
+  }
+
+}
