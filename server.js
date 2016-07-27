@@ -47,7 +47,7 @@ var basket = {};
 
 io.sockets.on('connection', function(socket){
     connections.push(socket);
-    basket[data.cusid] = socket.id;
+    //basket[data.cusid] = socket.id;
     console.log("device is connceted %s",  connections.length);
 
     socket.on("disconnect", function(data){
