@@ -21,7 +21,7 @@ app.get("/", function(req , res){
 
 app.get("/neworder", function(req , res){
   console.log("neworder is connected");
-
+  res.send(404);
 });
 
 
