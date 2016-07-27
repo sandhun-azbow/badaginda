@@ -32,11 +32,22 @@ var DriverSchema = new mongoose.Schema({
 , status: String
 });
 
+var OrderSchema = new mongoose.Schema({
+  cusId: String
+, order_id: String
+, status: String
+});
+
+var OrderModal = mongoose.model('orders', DriverSchema);
+
 var DriverModal = mongoose.model('driverlocations', DriverSchema);
+
+var basket = {};
 
 
 io.sockets.on('connection', function(socket){
     connections.push(socket);
+    basket[data.cusid] = socket.id;
     console.log("device is connceted %s",  connections.length);
 
     socket.on("disconnect", function(data){
@@ -47,11 +58,20 @@ io.sockets.on('connection', function(socket){
 
     socket.on("get drivers", function(data){
       console.log("got driver");
-      DriverModal.findOne({ driver_id: '003' }, function(err, drivers) {
+      DriverModal.findOne({ driver_id: '001' }, function(err, drivers) {
       if (err) return console.error(err);
       console.log(drivers);
-      io.sockets.emit("new_driver", drivers);
+      //io.sockets.emit("new_driver", drivers);
+
+      var to = basket[data.cusid];
+      io.sockets.socket(to).emit("new_driver", drivers);
+
       });
+
+
+
+
+
     });
 
     socket.on("update driver", function(){
@@ -64,7 +84,20 @@ io.sockets.on('connection', function(socket){
 
       driver.save(function(err, thor) {
         if (err) return console.error(err);
-        console.dir(thor);
+        console.dir(driver);
+      });
+
+    });
+    socket.on("add order", function(){
+        var order = new OrderModal({
+          cusId: '06'
+        , order_id: '000022122'
+        , status: '1'
+        });
+
+      order.save(function(err, thor) {
+        if (err) return console.error(err);
+        console.dir(order);
       });
 
     });
