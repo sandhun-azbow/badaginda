@@ -19,6 +19,11 @@ app.get("/", function(req , res){
 
 });
 
+app.get("/neworder", function(req , res){
+  console.log("neworder is connected");
+
+});
+
 
 var DriverSchema = new mongoose.Schema({
   driver_id: String
