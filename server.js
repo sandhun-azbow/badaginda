@@ -87,16 +87,16 @@ io.sockets.on('connection', function(socket){
     socket.on("add order", function(data){
       console.log(data);
         var order = new OrderModal({
-          cusId: '06'
-        , order_id: '000022122'
-        , status: '1'
+          cusId: data['cusid']
+        , order_id: data['order_id']
+        , status: data['status']
         });
 
       order.save(function(err, thor) {
         if (err) return console.error(err);
         console.dir(order);
         //var to = basket[data.cusid];
-        io.sockets.emit("get_order_status", [{"cusId": "06",  "order_id" : "22222", "status" : "1"}]);
+        io.sockets.emit("get_order_status", {"cusId": data['cusid'],  "order_id" : "22222", "status" : "1"});
         //io.sockets.socket(to).emit("get_order_status", order);
       });
 
