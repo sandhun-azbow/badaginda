@@ -96,7 +96,7 @@ io.sockets.on('connection', function(socket){
         if (err) return console.error(err);
         console.dir(order);
         //var to = basket[data.cusid];
-        io.sockets.emit("get_order_status", {"cusId": data['cusid'],  "order_id" : "22222", "status" : "1"});
+        io.sockets.emit("get_order_status", {"cusId": data['cusid'],  "order_id" : data['order_id'], "status" : data['status']});
         //io.sockets.socket(to).emit("get_order_status", order);
       });
 
