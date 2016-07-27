@@ -85,7 +85,7 @@ io.sockets.on('connection', function(socket){
 
     });
     socket.on("add order", function(data){
-      console.log(data);
+      console.log("add order is connected");
         var order = new OrderModal({
           cusId: '06'
         , order_id: '000022122'
