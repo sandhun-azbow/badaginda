@@ -68,13 +68,9 @@ io.sockets.on('connection', function(socket){
 
       });
 
-
-
-
-
     });
 
-    socket.on("update driver", function(){
+    socket.on("update driver", function(data){
         var driver = new DriverModal({
           driver_id: '001'
         , latitude: '6.912089'
@@ -88,7 +84,8 @@ io.sockets.on('connection', function(socket){
       });
 
     });
-    socket.on("add order", function(){
+    socket.on("add order", function(data){
+      console.log(data);
         var order = new OrderModal({
           cusId: '06'
         , order_id: '000022122'
@@ -98,6 +95,8 @@ io.sockets.on('connection', function(socket){
       order.save(function(err, thor) {
         if (err) return console.error(err);
         console.dir(order);
+        var to = basket[data.cusid];
+        io.sockets.socket(to).emit("get_order_status", order);
       });
 
     });
