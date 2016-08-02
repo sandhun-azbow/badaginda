@@ -61,7 +61,7 @@ io.sockets.on('connection', function(socket){
       DriverModal.findOne({ driver_id: '001' }, function(err, drivers) {
       if (err) return console.error(err);
       console.log(drivers);
-      io.sockets.emit("new_driver", drivers);
+      io.sockets.emit("new_driver", data);
 
       // var to = basket[data.cusid];
       // io.sockets.socket(to).emit("new_driver", drivers);
@@ -94,13 +94,13 @@ io.sockets.on('connection', function(socket){
 
       io.sockets.emit("get_order_status", {"cusId": data['cusid'],  "order_id" : data['order_id'], "status" : data['status']});
 
-      order.save(function(err, thor) {
-        if (err) return console.error(err);
-        console.dir(order);
-        //var to = basket[data.cusid];
-
-        //io.sockets.socket(to).emit("get_order_status", order);
-      });
+      // order.save(function(err, thor) {
+      //   if (err) return console.error(err);
+      //   console.dir(order);
+      //   //var to = basket[data.cusid];
+      //
+      //   //io.sockets.socket(to).emit("get_order_status", order);
+      // });
 
     });
 
