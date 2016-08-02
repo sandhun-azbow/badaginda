@@ -61,7 +61,7 @@ io.sockets.on('connection', function(socket){
       DriverModal.findOne({ driver_id: '001' }, function(err, drivers) {
       if (err) return console.error(err);
       console.log(drivers);
-      io.sockets.emit("new_driver", data);
+      io.sockets.emit("new_driver", drivers);
 
       // var to = basket[data.cusid];
       // io.sockets.socket(to).emit("new_driver", drivers);
