@@ -103,7 +103,7 @@ io.sockets.on('connection', function(socket){
         , status: data['status']
         });
 
-      io.sockets.emit("get_order_status", {"cusId": data['cusid'],  "order_id" : data['order_id'], "status" : data['status']});
+      io.sockets.emit("get_order_status", {"cusId": data['cusid'],  "order_id" : data['order_id'], "status" : data['status'], "driver_no" : data['driver_no']});
 
       // order.save(function(err, thor) {
       //   if (err) return console.error(err);
