@@ -70,6 +70,17 @@ io.sockets.on('connection', function(socket){
 
     });
 
+    socket.on("new dining", function(data){
+      console.log(data);
+      io.sockets.emit("dining status", {"cusid": data['cusid'], "dining_id": data['dining_id'],  "status" : data['status'], "message" : data['message']});
+
+      // var to = basket[data.cusid];
+      // io.sockets.socket(to).emit("new_driver", drivers);
+
+      });
+
+    });
+
     socket.on("update driver", function(data){
         var driver = new DriverModal({
           driver_id: '001'
