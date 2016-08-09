@@ -58,15 +58,17 @@ io.sockets.on('connection', function(socket){
 
     socket.on("get drivers", function(data){
       console.log(data);
-      DriverModal.findOne({ driver_id: '001' }, function(err, drivers) {
-      if (err) return console.error(err);
-      console.log(drivers);
+      // DriverModal.findOne({ driver_id: '001' }, function(err, drivers) {
+      // if (err) return console.error(err);
+      // console.log(drivers);
+      //
+      //
+      // // var to = basket[data.cusid];
+      // // io.sockets.socket(to).emit("new_driver", drivers);
+      //
+      // });
+
       io.sockets.emit("new_driver", {"cusid": data['cusid'], "driver_id": data['driver_id'],  "latitude" : data['latitude'], "longitude" : data['longitude']});
-
-      // var to = basket[data.cusid];
-      // io.sockets.socket(to).emit("new_driver", drivers);
-
-      });
 
     });
 
@@ -76,8 +78,6 @@ io.sockets.on('connection', function(socket){
 
       // var to = basket[data.cusid];
       // io.sockets.socket(to).emit("new_driver", drivers);
-
-      });
 
     });
 
