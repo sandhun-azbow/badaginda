@@ -68,7 +68,7 @@ io.sockets.on('connection', function(socket){
       //
       // });
 
-      io.sockets.emit("new_driver", {"cusid": data['cusid'], "driver_id": data['driver_id'],  "latitude" : data['latitude'], "longitude" : data['longitude']});
+      io.sockets.emit("new_driver", {"cusid": data['cusid'], "driver_id": data['driver_id'],  "latitude" : data['latitude'], "longitude" : data['longitude'], "order_id" : data['order_id']});
 
     });
 
