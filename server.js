@@ -80,6 +80,11 @@ io.sockets.on('connection', function(socket){
       // io.sockets.socket(to).emit("new_driver", drivers);
 
     });
+    socket.on("new order driver", function(data){
+      console.log(data);
+      io.sockets.emit("order for driver", {"driver_id": data['driver_id'], "status": data['status'],  "order_id" : data['order_id']});
+
+    });
 
     socket.on("update driver", function(data){
         var driver = new DriverModal({
